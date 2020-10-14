@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClientHistoryService.Domain\ClientHistoryService.Domain.csproj" />
+    <ProjectReference Include="..\ClientHistoryService.Infrastructure\ClientHistoryService.Infrastructure.csproj" />
   </ItemGroup>
 
 

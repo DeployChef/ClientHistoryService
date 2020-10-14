@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClientHistoryService.Domain.Interfaces;
+using ClientHistoryService.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -40,6 +41,7 @@ namespace ClientHistoryService
             });
             
             services.AddScoped<IClientHistoryService, Domain.Services.ClientHistoryService>();
+            services.AddScoped<IClientHistoryRepository, ClientHistoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
