@@ -13,5 +13,13 @@ namespace ClientHistoryService.Infrastructure.Db
         }
 
         public DbSet<CommunicationTypeEntity> CommunicationTypes { get; set; }
+        
+        public DbSet<CommunicationCategoryEntity> CommunicationCategories { get; set; }
+        
+        public DbSet<CommunicationHistoryEntity> CommunicationHistory { get; set; }
+        
+        public DbSet<DeliveryChannelEntity> DeliveryChannels { get; set; }
+        
+        public DbSet<DeliveryChannelGroupEntity> DeliveryChannelGroups { get; set; }
     }
 }
