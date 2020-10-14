@@ -46,7 +46,7 @@ namespace ClientHistoryService
             services.AddScoped<IClientHistoryRepository, ClientHistoryRepository>();
 
             services.AddDbContext<ClientHistoryDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ClientHistoryService")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
