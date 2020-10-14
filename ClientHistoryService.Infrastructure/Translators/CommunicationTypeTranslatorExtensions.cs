@@ -8,7 +8,7 @@ namespace ClientHistoryService.Infrastructure.Translators
 {
     public static class CommunicationTypeTranslatorExtensions
     {
-        public static CommunicationType ToModel(CommunicationTypeEntity entity)
+        public static CommunicationType ToModel(this CommunicationTypeEntity entity)
         {
             return new CommunicationType()
             {
