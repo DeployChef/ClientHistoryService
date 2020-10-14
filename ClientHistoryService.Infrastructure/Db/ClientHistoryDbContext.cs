@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ClientHistoryService.Infrastructure.Entities;
+﻿using ClientHistoryService.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClientHistoryService.Infrastructure.Db

@@ -8,6 +8,8 @@ namespace ClientHistoryService.Domain.Interfaces
 {
     public interface IClientHistoryService
     {
-        Task<Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationType>>> GetCommunicationTypesAsync(CancellationToken token = default);
+        Task<Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationType>>> GetCommunicationTypesAsync(CancellationToken cancellationToken = default);
+        
+        Task<Result<ClientHistoryServiceResults, IReadOnlyCollection<DeliveryChannel>>> GetDeliveryChannelsAsync(CancellationToken cancellationToken = default);
     }
 }

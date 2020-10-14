@@ -37,14 +37,25 @@ namespace ClientHistoryService.Controllers
                 case ClientHistoryServiceResults.Error:
                     return Problem(typesResult.Message);
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    return Problem("sorry :(");
             }
         }
 
         [HttpGet("channel")]
         public async Task<IActionResult> GetChannels(CancellationToken cancellationToken)
         {
-            return Ok();
+            var channelsResult = await _service.GetDeliveryChannelsAsync(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
+
+            switch (channelsResult.Value)
+            {
+                case ClientHistoryServiceResults.Success:
+                    return Ok(channelsResult.Data);
+                case ClientHistoryServiceResults.Error:
+                    return Problem(channelsResult.Message);
+                default:
+                    return Problem("sorry :(");
+            }
         }
 
         [HttpGet("communication")]

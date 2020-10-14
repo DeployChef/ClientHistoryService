@@ -9,6 +9,6 @@ namespace ClientHistoryService.Domain.Models
         
         public string Description { get; set; }
         
-        public long GroupId { get; set; }
+        public DeliveryChannelGroup Group { get; set; }
     }
 }

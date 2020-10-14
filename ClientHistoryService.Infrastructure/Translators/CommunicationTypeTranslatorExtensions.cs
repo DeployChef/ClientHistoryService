@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ClientHistoryService.Domain.Models;
+﻿using ClientHistoryService.Domain.Models;
 using ClientHistoryService.Infrastructure.Entities;
 
 namespace ClientHistoryService.Infrastructure.Translators
@@ -10,7 +7,7 @@ namespace ClientHistoryService.Infrastructure.Translators
     {
         public static CommunicationType ToModel(this CommunicationTypeEntity entity)
         {
-            return new CommunicationType()
+            return new CommunicationType
             {
                 Id = entity.Id,
                 Name = entity.Name,

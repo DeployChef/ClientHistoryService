@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ClientHistoryService.Domain.Interfaces;
@@ -25,10 +23,16 @@ namespace ClientHistoryService.Infrastructure.Repositories
             _logger = logger ?? new NullLogger<ClientHistoryRepository>();
         }
 
-        public async Task<IReadOnlyCollection<CommunicationType>> GetCommunicationTypesAsync(CancellationToken token)
+        public async Task<IReadOnlyCollection<CommunicationType>> GetCommunicationTypesAsync(CancellationToken cancellationToken)
         {
-            var types = await _context.CommunicationTypes.Select(c => c.ToModel()).ToListAsync(token);
+            var types = await _context.CommunicationTypes.Select(c => c.ToModel()).ToListAsync(cancellationToken);
             return types;
+        }
+
+        public async Task<IReadOnlyCollection<DeliveryChannel>> GetDeliveryChannelsAsync(CancellationToken cancellationToken)
+        {
+            var channels = await _context.DeliveryChannels.Include(i => i.Group).Select(c => c.ToModel()).ToListAsync(cancellationToken);
+            return channels;
         }
     }
 }

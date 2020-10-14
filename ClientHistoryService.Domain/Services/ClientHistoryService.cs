@@ -21,18 +21,31 @@ namespace ClientHistoryService.Domain.Services
             _logger = logger ?? new NullLogger<ClientHistoryService>();
         }
 
-        public async Task<Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationType>>> GetCommunicationTypesAsync(CancellationToken token = default)
+        public async Task<Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationType>>> GetCommunicationTypesAsync(CancellationToken cancellationToken = default)
         {
             try
             {
-                var types = await _repo.GetCommunicationTypesAsync(token);
-
+                var types = await _repo.GetCommunicationTypesAsync(cancellationToken);
                 return new Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationType>>(ClientHistoryServiceResults.Success, types);
             }
             catch (Exception e)
             {
                _logger.LogError(e.Message);
-               return new Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationType>>(ClientHistoryServiceResults.Error);
+               return new Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationType>>(ClientHistoryServiceResults.Error, null, e.Message);
+            }
+        }
+
+        public async Task<Result<ClientHistoryServiceResults, IReadOnlyCollection<DeliveryChannel>>> GetDeliveryChannelsAsync(CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var channels = await _repo.GetDeliveryChannelsAsync(cancellationToken);
+                return new Result<ClientHistoryServiceResults, IReadOnlyCollection<DeliveryChannel>>(ClientHistoryServiceResults.Success, channels);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return new Result<ClientHistoryServiceResults, IReadOnlyCollection<DeliveryChannel>>(ClientHistoryServiceResults.Error, null, e.Message);
             }
         }
     }
