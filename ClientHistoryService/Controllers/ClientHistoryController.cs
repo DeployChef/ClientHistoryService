@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
+using ClientHistoryService.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -12,10 +13,12 @@ namespace ClientHistoryService.Controllers
     [Route("api/v1")]
     public class ClientHistoryController : Controller
     {
+        private readonly IClientHistoryService _service;
         private readonly ILogger<ClientHistoryController> _logger;
 
-        public ClientHistoryController(ILogger<ClientHistoryController> logger)
+        public ClientHistoryController(IClientHistoryService service, ILogger<ClientHistoryController> logger)
         {
+            _service = service;
             _logger = logger;
         }
 

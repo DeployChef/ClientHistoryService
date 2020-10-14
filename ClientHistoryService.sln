@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientHistoryService", "Cli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientHistoryService.Infrastructure", "ClientHistoryService.Infrastructure\ClientHistoryService.Infrastructure.csproj", "{82B30A07-DA89-49FE-9E68-DF7E4947578F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientHistoryService.Domain", "ClientHistoryService.Domain\ClientHistoryService.Domain.csproj", "{C2410927-2134-4EB6-99D5-230599F3472C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{82B30A07-DA89-49FE-9E68-DF7E4947578F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82B30A07-DA89-49FE-9E68-DF7E4947578F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82B30A07-DA89-49FE-9E68-DF7E4947578F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2410927-2134-4EB6-99D5-230599F3472C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2410927-2134-4EB6-99D5-230599F3472C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2410927-2134-4EB6-99D5-230599F3472C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2410927-2134-4EB6-99D5-230599F3472C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
