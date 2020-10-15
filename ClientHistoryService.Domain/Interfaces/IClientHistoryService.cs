@@ -11,5 +11,7 @@ namespace ClientHistoryService.Domain.Interfaces
         Task<Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationType>>> GetCommunicationTypesAsync(CancellationToken cancellationToken = default);
         
         Task<Result<ClientHistoryServiceResults, IReadOnlyCollection<DeliveryChannel>>> GetDeliveryChannelsAsync(CancellationToken cancellationToken = default);
+        
+        Task<Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationHistory>>> GetCommunicationHistoryAsync(CommunicationHistoryRequest communicationHistoryRequest, CancellationToken cancellationToken = default);
     }
 }

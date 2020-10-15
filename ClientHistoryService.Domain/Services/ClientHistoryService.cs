@@ -48,5 +48,20 @@ namespace ClientHistoryService.Domain.Services
                 return new Result<ClientHistoryServiceResults, IReadOnlyCollection<DeliveryChannel>>(ClientHistoryServiceResults.Error, null, e.Message);
             }
         }
+
+        public async Task<Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationHistory>>> GetCommunicationHistoryAsync(CommunicationHistoryRequest communicationHistoryRequest,
+            CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var channels = await _repo.GetCommunicationHistoryAsync(communicationHistoryRequest, cancellationToken);
+                return new Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationHistory>>(ClientHistoryServiceResults.Success, channels);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return new Result<ClientHistoryServiceResults, IReadOnlyCollection<CommunicationHistory>>(ClientHistoryServiceResults.Error, null, e.Message);
+            }
+        }
     }
 }

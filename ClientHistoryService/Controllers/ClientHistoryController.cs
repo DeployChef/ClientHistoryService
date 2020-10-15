@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ClientHistoryService.Domain.Interfaces;
+using ClientHistoryService.Domain.Models;
 using ClientHistoryService.Domain.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -60,10 +62,28 @@ namespace ClientHistoryService.Controllers
 
         [HttpGet("communication")]
         public async Task<IActionResult> GetCommunications([Required] long clientId, [Required] DateTime dateAfter,
-            DateTime? dateBefore, [FromQuery] List<int> typeIds, [FromQuery] List<int> channelIds, long? managerId,
+            DateTime? dateBefore, [FromQuery] List<long> typeIds, [FromQuery] List<long> channelIds, long? managerId,
             CancellationToken cancellationToken)
         {
-            return Ok();
+            var communicationHistoryResult = await _service.GetCommunicationHistoryAsync(new CommunicationHistoryRequest
+            {
+                ClientId = clientId,
+                DateAfter = dateAfter,
+                DateBefore = dateBefore,
+                TypeIds = typeIds != null ? typeIds.ToList() : new List<long>(),
+                ChannelIds = channelIds != null ? channelIds.ToList() : new List<long>(),
+                ManagerId = managerId
+            }, cancellationToken);
+            
+            switch (communicationHistoryResult.Value)
+            {
+                case ClientHistoryServiceResults.Success:
+                    return Ok(communicationHistoryResult.Data);
+                case ClientHistoryServiceResults.Error:
+                    return Problem(communicationHistoryResult.Message);
+                default:
+                    return Problem("sorry :(");
+            }
         }
     }
 }

@@ -10,5 +10,7 @@ namespace ClientHistoryService.Domain.Interfaces
         Task<IReadOnlyCollection<CommunicationType>> GetCommunicationTypesAsync(CancellationToken cancellationToken);
         
         Task<IReadOnlyCollection<DeliveryChannel>> GetDeliveryChannelsAsync(CancellationToken cancellationToken);
+        
+        Task<IReadOnlyCollection<CommunicationHistory>> GetCommunicationHistoryAsync(CommunicationHistoryRequest communicationHistoryRequest, CancellationToken cancellationToken);
     }
 }
